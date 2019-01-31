@@ -1,5 +1,5 @@
 # node-ambiclimate
-[![NPM Version](https://img.shields.io/npm/v/node-ambiclimate.svg)](https://www.npmjs.com/package/node-ambiclimate)
+[![NPM Version](https://img.shields.io/npm/v/ambiclimate.svg)](https://www.npmjs.com/package/ambiclimate)
 
 A thin Node.js wrapper of the Ambi Climate HTTP API.
 
