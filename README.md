@@ -1,6 +1,5 @@
 # node-ambiclimate
-[![NPM Version](https://img.shields.io/npm/v/node-ambiclimate.svg)](https://www.npmjs.com/package/node-ambiclimate)
-[![Dependency Status](https://img.shields.io/versioneye/d/nodejs/node-ambiclimate.svg)](https://www.versioneye.com/nodejs/node-ambiclimate/)
+[![NPM Version](https://img.shields.io/npm/v/ambiclimate.svg)](https://www.npmjs.com/package/ambiclimate)
 
 A thin Node.js wrapper of the Ambi Climate HTTP API.
 
@@ -61,6 +60,12 @@ Option | Type | Description
       location_name: 'Home'
     }).then(console.log, console.error);
 
+    // Using Async / Await
+    let commandResponse = await client.off({
+      room_name: 'Bedroom',
+      location_name: 'Home'
+    });
+
 ## Comfort Mode
 Enable Comfort mode on your AC
 
@@ -93,6 +98,12 @@ Option | Type | Description
       room_name: 'Bedroom',
       location_name: 'Home'
     }).then(console.log, console.error);
+
+    // Using Async / Await
+    let commandResponse = await client.comfort({
+      room_name: 'Bedroom',
+      location_name: 'Home'
+    });
 
 ## Comfort Mode Feedback
 Send feedback for Comfort mode
@@ -129,6 +140,13 @@ Option | Type | Description
       value: 'but_warm'
     }).then(console.log, console.error);
 
+    // Using Async / Await
+    let commandResponse = await client.feedback({
+      room_name: 'Bedroom',
+      location_name: 'Home',
+      value: 'but_warm'
+    });
+
 ## Away Mode - Temperature Lower
 Enable Away mode on your AC to stay below target temperature
 
@@ -163,6 +181,13 @@ Option | Type | Description
       location_name: 'Home',
       value: 27
     }).then(console.log, console.error);
+
+    // Using Async / Await
+    let commandResponse = await client.away_temperature_lower({
+      room_name: 'Bedroom',
+      location_name: 'Home',
+      value: 27
+    });
 
 ## Away Mode - Temperature Upper
 Enable Away mode on your AC to stay above target temperature
@@ -199,6 +224,13 @@ Option | Type | Description
       value: 22
     }).then(console.log, console.error);
 
+    // Using Async / Await
+    let commandResponse = await client.away_temperature_upper({
+      room_name: 'Bedroom',
+      location_name: 'Home',
+      value: 22
+    });
+
 ## Away Mode - Humidity Upper
 Enable Away mode on your AC to stay above target humidity
 
@@ -234,6 +266,13 @@ Option | Type | Description
       value: 70
     }).then(console.log, console.error);
 
+    // Using Async / Await
+    let commandResponse = await client.away_humidity_upper({
+      room_name: 'Bedroom',
+      location_name: 'Home',
+      value: 70
+    });
+
 ## Temperature Mode
 Enable Temperature mode on your AC
 
@@ -268,6 +307,13 @@ Option | Type | Description
       location_name: 'Home',
       value: 24
     }).then(console.log, console.error);
+
+    // Using Async / Await
+    let commandResponse = await client.temperature({
+      room_name: 'Bedroom',
+      location_name: 'Home',
+      value: 24
+    });
 
 ## Sensor Temperature
 Get latest sensor temperature data
@@ -306,6 +352,12 @@ Returns an array of objects with two attributes:
       location_name: 'Home'
     }).then(console.log, console.error);
 
+    // Using Async / Await
+    let commandResponse = await client.sensor_temperature({
+      room_name: 'Bedroom',
+      location_name: 'Home'
+    });
+
 ## Sensor Humidity
 Get latest sensor humidity data
 
@@ -343,6 +395,12 @@ Returns an array of objects with two attributes:
       location_name: 'Home'
     }).then(console.log, console.error);
 
+    // Using Async / Await
+    let commandResponse = await client.sensor_humidity({
+      room_name: 'Bedroom',
+      location_name: 'Home'
+    });
+
 ## Mode
 Get Ambi Climate's current working mode
 
@@ -379,6 +437,12 @@ Returns an array of objects with two attributes:
       room_name: 'Bedroom',
       location_name: 'Home'
     }).then(console.log, console.error);
+
+    // Using Async / Await
+    let commandResponse = await client.mode({
+      room_name: 'Bedroom',
+      location_name: 'Home'
+    });
 
 ## Appliance States
 Get Ambi Climate's last N appliance states
@@ -430,6 +494,14 @@ Returns an object with several parts:
       offset: 0
     }).then(console.log, console.error);
 
+    // Using Async / Await
+    let commandResponse = await client.appliance_states({
+      room_name: 'Bedroom',
+      location_name: 'Home',
+      limit: 5,
+      offset: 0
+    });
+
 ## Devices
 Get users Ambi Climate device information
 
@@ -461,6 +533,9 @@ Returns an object with several parts:
 
     // Using promises
     client.devices().then(console.log, console.error);
+
+    // Using Async / Await
+    let commandResponse = await client.devices();
 
 ## IR Feature
 Get Ambi Climate's appliance IR feature - it returns list of values rather than current state
@@ -517,6 +592,12 @@ Returns an object with several parts:
       location_name: 'Home'
     }).then(console.log, console.error);
 
+    // Using Async / Await
+    let commandResponse = await client.devices({
+      room_name: 'Bedroom',
+      location_name: 'Home'
+    });
+
 ## Deployment
 Create deployment for appliance with Ambi Climate
 
@@ -542,7 +623,7 @@ Returns an object with several parts:
         mode: 'cool',
         power: 'on',
         {
-          temperature: 18,
+          temperature: '18',
           fan: 'med',
           louver, 'off'
         }
@@ -559,9 +640,30 @@ Returns an object with several parts:
     // Using promises
     client.devices({
       room_name: 'Bedroom',
-      location_name: 'Home'
+      location_name: 'Home',
+      mode: 'cool',
+        power: 'on',
+        {
+          temperature: '18',
+          fan: 'med',
+          louver, 'off'
+        }
     })
     .then(console.log, console.error);
 
+    // Using Async / Await
+    let commandResponse = await client.devices({
+      room_name: 'Bedroom',
+      location_name: 'Home',
+      mode: 'cool',
+        power: 'on',
+        {
+          temperature: '18',
+          fan: 'med',
+          louver, 'off'
+        }
+    });
+
 ## Acknowledgements
 Thanks to [gbrooker](https://github.com/gbrooker) for developing the OAUTH2 Client for the Ambi Climate API
+Forked from [alisdairjsmyth/node-ambiclimate](https://github.com/alisdairjsmyth/node-ambiclimate)
